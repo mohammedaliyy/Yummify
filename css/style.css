@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 :root {
-  --primary-color: #f48738;
-  --secondary-color: #6cb354;
+  --primary-color: #00a4f8;
+  --secondary-color: #00ac6a;
+  --secondary2-color: #00ef92;
 
   --text-color: #5f6062;
   --primary-light: #facba968;
+  --primary-h1: #72fb45de;
   --light-primary: #b4dba5;
   --light-text: #e8eae162;
   --light-background: #e9fbe190;
+
+  --borders: #00cebe;
 }
 
 * {
@@ -24,7 +29,7 @@ html {
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
-  background-color: var(--light-primary);
+  background-color: var(--secondary2-color);
 
   color: var(--text-color);
 }
@@ -42,9 +47,9 @@ main {
   justify-content: flex-start;
   align-items: center;
 
-  padding: 1.4rem .2rem;
+  padding: 1.4rem 0.2rem;
   position: relative;
-  gap: 50%;
+  gap: 42%;
 }
 
 .header__logo {
@@ -55,11 +60,25 @@ main {
   margin: 0.1rem 2rem;
 }
 
-.header a {
+.header__wrap {
+  display: flex;
+  align-items: center;
+}
+
+.header__wrap h1 {
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+}
+
+.header__bookmark {
   position: absolute;
   right: 0;
   bottom: 50%;
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
 
   text-decoration: none;
   text-transform: uppercase;
@@ -73,7 +92,7 @@ main {
   letter-spacing: 0.3rem;
 }
 
-.header a:hover {
+.header__bookmark:hover {
   opacity: 0.8;
   transition: 0.2s opacity;
 }
@@ -89,7 +108,6 @@ main {
 
 .header__search input[type="search"] {
   color: var(--text-color);
-  letter-spacing: 0.1rem;
   font-weight: 100;
   font-size: 1.8rem;
   background-color: var(--light-background);
@@ -99,7 +117,11 @@ main {
   width: 35rem;
 
   outline: none;
-  border: 1.8px solid var(--secondary-color);
+  border: 1.8px solid var(--borders);
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }
 
 .header__search input[type="search"]::placeholder {
@@ -114,7 +136,8 @@ main {
 
 .header__search img:hover {
   opacity: 0.8;
-  transition: 0.2s opacity;
+  transform: scale(1.05);
+  transition: 0.2s all;
   cursor: pointer;
 }
 
@@ -129,10 +152,72 @@ main {
 .body__left {
   display: flex;
   flex-direction: column;
-  
-  background-color: var(--light-background);
 
+  background-color: var(--light-background);
+  border-bottom-left-radius: 1rem;
+
+  position: relative;
+  width: 28%;
+}
+
+.body__right {
+  display: flex;
+  flex-direction: column;
+  min-height: 112rem;
+  width: 72%;
+  position: relative;
+
+  overflow: hidden;
+}
+
+.body__slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: white;
+
+  border-bottom-right-radius: 1rem;
+  transform: translateX(110%);
+  transition: 0.4s transform;
   width: 35rem;
+  height: 100%;
+  z-index: 111;
+
+  box-shadow: none;
+
+  overflow-y: auto;
+}
+
+.active__slider {
+  box-shadow: -10px 0px 100px 20px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  z-index: 111;
+  transition: 0.4s transform;
+}
+
+.active__btnBookmark {
+}
+
+.body__loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  display: none;
+
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding-top: 8rem;
+
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.body__loading img {
+  width: 10rem;
+  height: 10rem;
 }
 
 .body__foodbox {
@@ -145,10 +230,10 @@ main {
 
 .body__foodbox:hover {
   background-color: white;
-  transform: translateY(-.2rem);
+  transform: translateY(-0.2rem);
   cursor: pointer;
 
-  transition: .4s all;
+  transition: 0.4s all;
 }
 
 .body__foodbox img {
@@ -177,16 +262,20 @@ main {
 }
 
 .body__pagination span {
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   font-weight: 500;
   font-style: italic;
   font-size: 1.4rem;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 1.5rem;
   color: white;
   cursor: pointer;
 
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
 }
 
 .body__pagination span:hover {
@@ -196,6 +285,243 @@ main {
 
 .body__pagination span:active {
   transform: translateY(10px);
-  transition: .5s transform;
+  transition: 0.5s transform;
 }
+
+.body__img {
+  width: 100%;
+  height: 35rem;
+  position: relative;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0;
+}
+
+.body__img::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
+  opacity: 0.35;
+}
+
+.body__img h1 {
+  background-image: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 20%) skewY(-6deg);
+  color: #fff;
+  font-weight: 700;
+  font-size: 3.25rem;
+  text-transform: uppercase;
+  line-height: 1.45;
+  text-align: center;
+  padding: 1rem 2rem;
+
+  z-index: 11;
+}
+
+.body__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 7.5rem 8rem 3.5rem;
+}
+
+.body__buttons {
+  display: flex;
+  gap: 5rem;
+}
+
+.body__minser {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.body__servings {
+  display: flex;
+  gap: 1.1rem;
+}
+
+.body__h4 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.body__h4 span {
+  font-weight: bold;
+}
+
+.body__servings div {
+  transform: translateX(10px);
+}
+
+.body__icon-3:hover {
+  transform: translateY(-2.5px);
+  transition: 0.3s transform;
+  cursor: pointer;
+}
+
+.body__icon-4:hover {
+  transform: translateY(-2.5px);
+  transition: 0.3s transform;
+  cursor: pointer;
+}
+
+.body__bookmark {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  outline: 5px solid var(--borders);
+
+  position: relative;
+}
+
+.body__bookmark span {
+  display: none;
+  align-self: center;
+  justify-content: center;
+  font-weight: bold;
+  opacity: 0.7;
+  color: white;
+  letter-spacing: 0.05rem;
+  transform: translateX(-50%);
+
+  position: absolute;
+  top: -140%;
+  left: 50%;
+
+  text-align: center;
+  padding: 0.6rem;
+  width: 11rem;
+  background: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
+  font-size: 1rem;
+}
+
+.added {
+  background: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
+}
+
+.body__bookmark:hover {
+  transform: scale(1.05);
+  transition: 0.3s transform;
+  cursor: pointer;
+}
+
+.icon {
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.body__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 4rem;
+  padding: 5rem 10rem;
+}
+
+.body__link h1 {
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+
+.body__link p {
+  text-align: center;
+  width: 80%;
+}
+
+.body__link p span {
+  font-weight: bold;
+}
+
+.body__link a {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 1.25rem 2.25rem;
+  text-decoration: none;
+  color: white;
+  font-style: italic;
+  border-radius: 30px;
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    to right bottom,
+    var(--secondary2-color),
+    var(--primary-color)
+  );
+}
+
+.body__link a:hover {
+  opacity: 0.8;
+  transition: 0.2s opacity;
+}
+
+.body__main {
+  background-color: var(--light-background);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5rem 8rem;
+  gap: 3.6rem;
+}
+
+.body__main h1 {
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+
+.body__ingredients {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 2.5rem 3rem;
+  list-style: none;
+  font-size: 1.48rem;
+}
+
+.body__ingredient {
+  display: flex;
+  gap: 1rem;
+
+  width: 80%;
+}
+
+.body__ingredient img {
+  width: 1.6rem;
+  height: 1.6rem;
+  align-self: flex-start;
+  transform: translateY(2px);
+}
+
 /* body section end */

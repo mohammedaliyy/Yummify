@@ -9,7 +9,7 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="images/logo-circle.png"
+      href="images/favicon.png"
     />
     <title>Y U M M I F Y</title>
   </head>
@@ -17,24 +17,92 @@
     <main>
       <!-- header start -->
       <header class="header">
-        <img
+        <div class="header__wrap">
+          <img
           class="header__logo"
           src="images/logo-circle.png"
           alt="main logo of website"
         />
-        <div class="header__search">
-          <input class="header__input" placeholder="Search..." type="search" name="search" />
-          <img class="header__loupe" src="images/search-icon.png" alt="search icon" />
+        <h1>Yummify</h1>
         </div>
-        <a href="#">List</a>
+        
+        
+        <div class="header__search">
+          <input
+            class="header__input"
+            placeholder="Search..."
+            type="search"
+            name="search"
+          />
+          <img class="header__loupe" src="images/boom.png" alt="search icon" />
+        </div>
+        <a class="header__bookmark" href="">Bookmark</a>
       </header>
       <!-- header end -->
 
       <!-- body section start -->
       <section class="body">
         <div class="body__left">
+          <div class="body__loading body__loading_left">
+            <img src="images/spinner.gif" alt="loading gif" />
+          </div>
         </div>
-        <div class="body__right"></div>
+        <div class="body__right">
+          <div class="body__slider"></div>
+          <div class="body__loading body__loading_right">
+            <img src="images/spinner.gif" alt="loading gif" />
+          </div>
+          <div class="body__img">
+            <h1></h1>
+          </div>
+          <div class="body__info">
+            <div class="body__buttons">
+              <div class="body__minser">
+                <img
+                  class="icon body__icon-1"
+                  src="images/wall-clock.png"
+                  alt="time icon"
+                />
+                <h4 class="body__h4"><span></span> Minutes</h4>
+              </div>
+              <div class="body__servings">
+                <img
+                  class="icon body__icon-2"
+                  src="images/add-group.png"
+                  alt="person icon"
+                />
+                <h4 class="body__h4"><span></span> Servings</h4>
+                <div>
+                  <img
+                    class="icon body__icon-3"
+                    src="images/minus.png"
+                    alt="minus icon"
+                  />
+                  <img
+                    class="icon body__icon-4"
+                    src="images/post.png"
+                    alt="plus icon"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="body__bookmark">
+              <span>Add to Bookmark</span>
+            </div>
+          </div>
+          <div class="body__main">
+            <h1>Recipe Ingredients</h1>
+            <ul class="body__ingredients"></ul>
+          </div>
+          <div class="body__link">
+            <h1>How To Cook It</h1>
+            <p>
+              This recipe was carefully designed and tested by <span>...</span>.
+              Please check out directions at their website.
+            </p>
+            <a target="_blank" href="">Directions ></a>
+          </div>
+        </div>
       </section>
       <!-- body section end -->
     </main>
