@@ -146,12 +146,11 @@ search.addEventListener("click", (e) => {
 
           // Bookmark
           const bookmarkBtn = document.querySelector(".body__bookmark");
-          if (e.getAttribute("data-added") == "true"){
-            bookmarkBtn.classList.add("added")
-          }else{
-            bookmarkBtn.classList.remove("added")
+          if (e.getAttribute("data-added") == "true") {
+            bookmarkBtn.classList.add("added");
+          } else {
+            bookmarkBtn.classList.remove("added");
           }
-          
 
           // Getting id
           const id = e.getAttribute("id");
@@ -315,7 +314,6 @@ search.addEventListener("click", (e) => {
     });
     if (bookmarkBtn.classList.contains("added")) {
       inscription.textContent = "Added";
-
     } else {
       inscription.textContent = "Add to Bookmark";
     }
@@ -333,6 +331,13 @@ search.addEventListener("click", (e) => {
 // Adding to Bookmark
 const btnBookmark = document.querySelector(".header__bookmark");
 const bookmarkSlider = document.querySelector(".body__slider");
+const btnBookmark2 = document.querySelector(".header__bookmark_2");
+btnBookmark2.addEventListener("click", function (e) {
+  e.preventDefault();
+  bookmarkSlider.classList.toggle("active__slider");
+  btnBookmark.classList.toggle("active__btnBookmark");
+});
+
 btnBookmark.addEventListener("click", (e) => {
   e.preventDefault();
   bookmarkSlider.classList.toggle("active__slider");
