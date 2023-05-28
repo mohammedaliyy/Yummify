@@ -2,18 +2,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 :root {
+  /* main colors */
   --primary-color: #00a4f8;
   --secondary-color: #00ac6a;
   --secondary2-color: #00ef92;
 
-  --text-color: #5f6062;
+  /* light colors */
   --primary-light: #facba968;
   --primary-h1: #72fb45de;
   --light-primary: #b4dba5;
-  --light-text: #e8eae162;
   --light-background: #e9fbe190;
 
+  /* text colors */
+  --text-color: #5f6062;
+  --light-text: #e8eae162;
+
+  /* secondary colors */
   --borders: #00cebe;
+  --error-color: #ff0000;
 }
 
 * {
@@ -39,7 +45,40 @@ main {
   background-color: white;
 
   border-radius: 1rem;
+
+  position: relative;
 }
+
+.blur > *:not(:first-child) {
+  filter: blur(2px);
+}
+
+/* error start */
+.message {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  background-color: white;
+  color: var(--error-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+  width: 25rem;
+  z-index: 0;
+
+  padding: 2rem 4rem;
+
+  transform: translateX(-50%) translateY(-500%);
+  transition: 0.3s transform;
+  text-align: center;
+}
+
+.message__active {
+  transform: translateX(-50%) translateY(100%);
+  transition: 0.3s transform;
+  z-index: 7777;
+}
+/* error end */
 
 /* header start */
 .header {
@@ -186,7 +225,7 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: 0.4s transform;
   width: 35rem;
   height: 100%;
-  z-index: 111;
+  z-index: 77777;
 
   box-shadow: none;
 
@@ -196,18 +235,15 @@ input[type="search"]::-webkit-search-cancel-button {
 .active__slider {
   box-shadow: -10px 0px 100px 20px rgba(0, 0, 0, 0.1);
   transform: translateX(0);
-  z-index: 111;
+  z-index: 77777;
   transition: 0.4s transform;
-}
-
-.active__btnBookmark {
 }
 
 .body__loading {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 11;
+  z-index: 11111;
   display: none;
 
   width: 100%;
@@ -555,6 +591,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
   .body__img h1 {
     font-size: 2.6rem;
+    width: 90%;
   }
 }
 
@@ -654,7 +691,7 @@ input[type="search"]::-webkit-search-cancel-button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5rem 2.6rem 2.5rem;
+    padding: 8rem 2.6rem 2.5rem;
   }
 
   .body__main {
@@ -702,10 +739,28 @@ input[type="search"]::-webkit-search-cancel-button {
 
     align-items: center;
     justify-content: center;
+  }
+
+  .body__ingredient {
+    justify-self: center;
+  }
 }
 
-.body__ingredient {
-  justify-self: center;
-}
+@media screen and (max-width: 340px) {
+  html {
+    font-size: 50%;
+  }
+
+  .body__left {
+    padding: 2rem 3.5rem 0 3.5rem;
+  }
+
+  .body__info {
+    padding: 8rem 1.2rem 2rem;
+  }
+
+  .header__search input[type="search"] {
+    width: 30rem;
+  }
 }
 /* media queries end */

@@ -10,6 +10,11 @@
   </head>
   <body>
     <main>
+      <!-- error start -->
+      <div class="message">
+        <p></p>
+      </div>
+      <!-- error end -->
       <!-- header start -->
       <header class="header">
         <div class="header__wrap">
@@ -39,6 +44,10 @@
         <div class="body__left">
           <div class="body__loading body__loading_left">
             <img src="images/spinner.gif" alt="loading gif" />
+          </div>
+          <div class="body__pagination">
+            <span class="body__btn_left">First</span>
+            <span class="body__btn_right">Page 2 ></span>
           </div>
           <a class="header__bookmark header__bookmark_2" href="">Bookmark</a>
         </div>
@@ -101,6 +110,8 @@
       </section>
       <!-- body section end -->
     </main>
-    <script src="js/script.js"></script>
+    <script type="module" src="js/fetch.js"></script>
+    <script type="module" src="js/foods.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
