@@ -248,21 +248,23 @@ export class Foods {
     // fetching data from local storage
     const foodboxArr = localStorage.getItem("foodboxArr");
     const myArray = JSON.parse(foodboxArr);
-    for (let i = 0; i < myArray.length; i++) {
-      document
-        .querySelector(".body__slider")
-        .insertAdjacentHTML("beforeend", myArray[i]);
-    }
+    if (myArray != null) {
+      for (let i = 0; i < myArray.length; i++) {
+        document
+          .querySelector(".body__slider")
+          .insertAdjacentHTML("beforeend", myArray[i]);
+      }
 
-    // adding click handler to slider childs
-    const updatedSliderChilds = document.querySelectorAll(
-      ".body__slider .body__foodbox"
-    );
-    updatedSliderChilds.forEach((child) => {
-      child.addEventListener("click", (e) => {
-        this.activeFoodbox(Main._apiKey, updatedSliderChilds);
+      // adding click handler to slider childs
+      const updatedSliderChilds = document.querySelectorAll(
+        ".body__slider .body__foodbox"
+      );
+      updatedSliderChilds.forEach((child) => {
+        child.addEventListener("click", (e) => {
+          this.activeFoodbox(Main._apiKey, updatedSliderChilds);
+        });
       });
-    });
+    }
   }
 
   addToSlider() {
