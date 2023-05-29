@@ -26,6 +26,8 @@ Welcome to my Yummify app project! The Food API provides access to a database of
 
 - To modify the app, you can edit the HTML, CSS, and JavaScript files as needed.
 
+- Please feel free to access my hosted website at [**Yummify**](https://yummify-food-recipe.netlify.app/) 🔗 to view my work and learn more about my skills and experience.
+
 ## API Key
 
 This app uses the Forkify API to fetch 1.000.000 food recipes. You will need to obtain an API key from [Forkify](https://forkify-api.herokuapp.com/) and create `apikey.js` file in `js` folder then store your API key in `API_KEY` variable then `export default`that variable.
