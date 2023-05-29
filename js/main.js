@@ -1,8 +1,9 @@
 import { Fetch } from "./fetch.js";
 import { Foods } from "./foods.js";
+import API_KEY from "./apikey.js"
 
 export class Main {
-  static _apiKey = "012568df-07a1-4b75-8bd3-3ceb408ebd3d";
+  static _apiKey = API_KEY;
   constructor() {
     // input handlers
     this.loupe = document.querySelector(".header__loupe");
